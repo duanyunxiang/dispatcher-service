@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: dispatcher-service
+  cloud:
+    function:
+      # 定义Spring Cloud Function管理的函数，此处用'|'将两个函数组合，否则用';'分隔
+      definition: pack|label
+
+server:
+  port: 9003

@@ -29,11 +29,14 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    // Spring Cloud Function库
     implementation 'org.springframework.cloud:spring-cloud-function-context'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'io.projectreactor:reactor-test'
 }
 
 dependencyManagement {
