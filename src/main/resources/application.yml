@@ -5,6 +5,25 @@ spring:
     function:
       # 定义Spring Cloud Function管理的函数，此处用'|'将两个函数组合，否则用';'分隔
       definition: pack|label
+    stream:
+      # 交换机和队列，由框架自动创建
+      bindings:
+        # 输入绑定
+        packlabel-in-0:
+          # 在代理中，绑定器实际绑定的名称，即交换机：order-accepted，队列名：order-accepted.dispatcher-service
+          destination: order-accepted
+          # 对目的地感兴趣的消费者组，队列名策略<destination>.<group>
+          group: ${spring.application.name}
+        # 输出绑定
+        packlabel-out-0:
+          destination: order-dispatched
+  # rabbitmq配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: password
+    connection-timeout: 5s
 
 server:
   port: 9003
