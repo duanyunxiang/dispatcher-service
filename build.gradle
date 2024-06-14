@@ -33,6 +33,7 @@ dependencies {
     //implementation 'org.springframework.cloud:spring-cloud-function-context'
     // Spring Cloud Stream库包含Spring Cloud Function库
     implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
