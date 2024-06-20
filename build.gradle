@@ -25,6 +25,8 @@ repositories {
 
 ext {
     set('springCloudVersion', "2021.0.8")
+    // OpenTelemetry版本
+    set('otelVersion',"1.17.0")
 }
 
 dependencies {
@@ -39,6 +41,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     // 集成Grafana观测工具prometheus，用于收集和存储应用metrics度量信息
     implementation 'io.micrometer:micrometer-registry-prometheus'
+
+    // OpenTelemetry代理会通过字节码动态插装Java代码
+    runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
