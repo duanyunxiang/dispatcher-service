@@ -18,7 +18,7 @@ public class DispatchingFunctions {
     @Bean
     public Function<OrderAcceptedMessage,Long> pack(){
         return message->{
-            log.info("the order with id {} is packed.",message.orderId());
+            log.info("订单已打包，id：{}",message.orderId());
             return message.orderId();
         };
     }
@@ -29,7 +29,7 @@ public class DispatchingFunctions {
     @Bean
     public Function<Flux<Long>,Flux<OrderDispatchedMessage>> label(){
         return orderFlux -> orderFlux.map(orderId->{
-            log.info("the order with id {} is labeled.",orderId);
+            log.info("订单已标记，id：{}",orderId);
             return new OrderDispatchedMessage(orderId);
         });
     }
