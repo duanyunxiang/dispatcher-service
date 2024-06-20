@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.0'
-    id 'io.spring.dependency-management' version '1.1.5'
+    id 'org.springframework.boot' version '2.7.18'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 group = 'com.dyx'
@@ -24,7 +24,7 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2023.0.2")
+    set('springCloudVersion', "2021.0.8")
 }
 
 dependencies {
@@ -34,14 +34,21 @@ dependencies {
     // Spring Cloud Stream库包含Spring Cloud Function库
     implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.retry:spring-retry'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'io.projectreactor:reactor-test'
-    testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
+    testImplementation("org.springframework.cloud:spring-cloud-stream") {
+        artifact {
+            name = "spring-cloud-stream"
+            extension = "jar"
+            type ="test-jar"
+            classifier = "test-binder"
+        }
+    }
 }
 
 dependencyManagement {
