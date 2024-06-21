@@ -2,7 +2,7 @@ spring:
   application:
     name: dispatcher-service
   config:
-    import: "optional:configserver:"
+    import: ""
   cloud:
     function:
       # 定义Spring Cloud Function管理的函数，此处用'|'将两个函数组合，否则用';'分隔
@@ -20,6 +20,7 @@ spring:
         packlabel-out-0:
           destination: order-dispatched
     config:
+      enabled: false
       uri: http://localhost:8888
       request-connect-timeout: 5000
       request-read-timeout: 5000

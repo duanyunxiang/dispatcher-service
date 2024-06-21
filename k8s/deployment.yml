@@ -52,3 +52,7 @@ spec:
               port: 9003
             initialDelaySeconds: 5
             periodSeconds: 15
+      volumes:
+        - name: dispatcher-config-volume
+          configMap:
+            name: dispatcher-config
